@@ -1,7 +1,6 @@
 { config, pkgs, inputs, ... }:
 let
-  secrets = import ./secrets.nix;
-  username = secrets.username;
+  username = config.myUser.username;
   hmModulesPath = ../../modules/home-manager; 
 in
 {
@@ -27,5 +26,6 @@ in
   home.packages = [
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     pkgs.steam
+	pkgs.kdePackages.kdeconnect-kde
   ];
 }
