@@ -19,9 +19,6 @@
       default = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          (./hosts/default/configuration.nix)
-		  (./hosts/default/hardware-configuration.nix)
-
 		  (./hosts/default/userDefaults.nix)
 		  (./hosts/default/systemDefaults.nix)
 
@@ -32,6 +29,9 @@
 		  (if builtins.pathExists "/etc/nixos/private/systemOverrides.nix" then
 		    "/etc/nixos/private/systemOverrides.nix"
 			else { })
+
+          (./hosts/default/configuration.nix)
+		  (./hosts/default/hardware-configuration.nix)
 
           inputs.home-manager.nixosModules.default
         ];

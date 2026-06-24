@@ -3,7 +3,7 @@ let
   cfg = config.myUser;
 in
 {
-  options.myProfile = {
+  options.myUser = {
     username = lib.mkOption {
 	  type = lib.types.str;
 	  default = "johnd";
