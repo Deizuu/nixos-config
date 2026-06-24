@@ -5,7 +5,7 @@
 { config, pkgs, inputs, ... }:
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ../../modules/nixos/boot.nix
       ../../modules/nixos/desktopGnome.nix
       ../../modules/nixos/networking.nix
