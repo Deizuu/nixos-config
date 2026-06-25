@@ -4,19 +4,19 @@ let
 in
 {
   options.mySystem = {
-    hostName = {
+    hostName = lib.mkOption {
 	  type = lib.types.str;
 	  default = "nixos";
 	};
 
-	timeZone = {
+	timeZone = lib.mkOption {
 	  type = lib.types.str;
 	  default = "UTC";
 	};
   };
 
   config = {
-    networking.hostName = cfg.hostname;
+    networking.hostName = cfg.hostName;
     time.timeZone = cfg.timeZone;
   };
 }

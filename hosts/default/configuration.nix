@@ -18,7 +18,7 @@
   home-manager = {
     backupFileExtension = "backup";
     overwriteBackup = true;
-    extraSpecialArgs = { inherit inputs; inherit config; };
+    extraSpecialArgs = { inherit inputs; };
     users = {
       ${config.myUser.username} = import ./home.nix;
     };

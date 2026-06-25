@@ -10,13 +10,13 @@ in
 	  description = "The user's name";
 	};
 
-	userDescription = {
+	userDescription = lib.mkOption {
 	  type = lib.types.str;
 	  default = "John Doe";
 	  description = "The user's description (usually the full name of the user)";
 	};
 
-	hashedPassword = {
+	hashedPassword = lib.mkOption {
 	  type = lib.types.nullOr lib.types.str;
 	  default = null;
 	};
@@ -25,7 +25,7 @@ in
   config = {
     users.users.${cfg.username} = {
 	  isNormalUser = true;
-	  userDescription = cfg.userDescription;
+	  description = cfg.userDescription;
 	  initialHashedPassword = cfg.hashedPassword;
 	  extraGroups = [ "networkmanager" "wheel" ];
 	};
