@@ -13,6 +13,8 @@
       ../../modules/nixos/audioPipewire.nix
       ../../modules/nixos/printing.nix
       ../../modules/nixos/nix-settings.nix
+
+	  ../../modules/nixos/nvidiaKepler.nix
     ];
 
   home-manager = {
