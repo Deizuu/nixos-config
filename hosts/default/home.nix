@@ -19,9 +19,6 @@ in
 
   programs.home-manager.enable = true;
 
-  nixpkgs.config.allowUnfree = true; # Allows unfree packages to be installed for the user
-
-  programs.steam.enable = true;
   home.packages = [
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 	pkgs.kdePackages.kdeconnect-kde
