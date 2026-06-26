@@ -5,11 +5,14 @@
 
 	# NVIDIA driver configuration
 	hardware.nvidia = {
-		package = config.boot.kernelPackages.nvidia_x11;
+		enabled = true;
+		package = pkgs.linuxKernel.packages.linux_7_1.nvidia_x11_legacy470;
 		modesetting.enable = true;
 		powerManagement.enable = true;
 		open = false; # Use proprietary driver for better support on older cards
 	};
 
 	boot.kernelModules = [ "nvidia" ];
+	boot.kernelParams = [ "nvidia-drm.modeset=1" ];
+
 }

@@ -2,31 +2,31 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
-{
-  imports =
-    [
-      ../../modules/nixos/boot.nix
-      ../../modules/nixos/desktopGnome.nix
-      ../../modules/nixos/networking.nix
-      ../../modules/nixos/locale.nix
-      ../../modules/nixos/audioPipewire.nix
-      ../../modules/nixos/printing.nix
-      ../../modules/nixos/nix-settings.nix
+{ config, pkgs, inputs, ... }: {
+  imports = [
+    ../../modules/nixos/boot.nix
+	../../modules/nixos/desktopGnome.nix
+	../../modules/nixos/networking.nix
+	../../modules/nixos/locale.nix
+	../../modules/nixos/audioPipewire.nix
+	../../modules/nixos/printing.nix
+	../../modules/nixos/nix-settings.nix
 
-	  ../../modules/nixos/nvidiaKepler.nix
-    ];
+	../../modules/nixos/nvidiaKepler.nix
+  ];
 
   home-manager = {
     backupFileExtension = "backup";
-    overwriteBackup = true;
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      ${config.myUser.username} = import ./home.nix;
-    };
+	overwriteBackup = true;
+	extraSpecialArgs = { inherit inputs; };
+	users = {
+	  ${config.myUser.username} = import ./home.nix;
+	};
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = [
+    "steam"
+  ];
 
   programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
