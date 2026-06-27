@@ -6,7 +6,8 @@
   services.xserver.desktopManager.cinnamon.enable = true;
 
   services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+    layout = "fr,us";
+    variant = "us,colemak_dh_ortho";
+	options = "grp:alt_shift_toggle";
   };
 }
