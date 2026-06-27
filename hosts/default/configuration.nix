@@ -24,10 +24,6 @@
 	};
   };
 
-  nixpkgs.config.allowUnfree = [
-    "steam"
-  ];
-
   programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
     neovim
