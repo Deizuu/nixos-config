@@ -1,4 +1,5 @@
-{ lib, config, pkgs, ... }:
-{
-  networking.networkmanager.enable = true;
+{ self, inputs, ... }: {
+  flake.nixosModules.networking = { pkgs, ... }: {
+    networking.networkmanager.enable = true;
+  };
 }
