@@ -24,9 +24,7 @@
 	};
   };
 
-  nixpkgs.config.allowUnfree = [
-    "steam"
-  ];
+  nixpkgs.config.allowUnfree = true;
 
   programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
