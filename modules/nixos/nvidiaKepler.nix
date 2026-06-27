@@ -13,5 +13,6 @@
 
 	boot.kernelModules = [ "nvidia" ];
 	boot.kernelParams = [ "nvidia-drm.modeset=1" ];
-
+	
+	nixpkgs.config.nvidia.acceptLicense = true;
 }
