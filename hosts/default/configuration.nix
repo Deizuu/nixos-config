@@ -5,7 +5,7 @@
 { config, pkgs, inputs, ... }: {
   imports = [
     ../../modules/nixos/boot.nix
-	../../modules/nixos/desktopGnome.nix
+	../../modules/nixos/desktop.nix
 	../../modules/nixos/networking.nix
 	../../modules/nixos/locale.nix
 	../../modules/nixos/audioPipewire.nix
