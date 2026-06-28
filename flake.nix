@@ -18,9 +18,6 @@
     import-tree.url = "github:vic/import-tree";
   };
 
-  outputs = inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      (inputs.import-tree ./modules/)
-      (inputs.import-tree ./hosts/)
-    };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; }
+    (inputs.import-tree ./modules);
 }
