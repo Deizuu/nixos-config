@@ -6,7 +6,6 @@
       audioPipewire
       boot
       desktopEnvironment
-      locale
       networking
       nixSettings
       nvidiaKepler
@@ -18,6 +17,8 @@
     imports = [
 	  self.nixosModules.desktopHardware
 	];
+    
+    services.automatic-timezoned.enable = true;
 
     networking.hostName = "nixos-desktop";
     system.stateVersion = "26.05";
