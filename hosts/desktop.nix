@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
   flake.nixosConfigurations.desktop = inputs.nixpkgs.lib.nixosSystem {
-    modules = with self.nixosModules.nixos; [
+    modules = with self.nixosModules; [
       desktopConfiguration
       
       audioPipewire
@@ -19,7 +19,7 @@
 	  self.nixosModules.desktopHardware
 	];
 
-    networking.hostname = "nixos-desktop";
+    networking.hostName = "nixos-desktop";
     system.stateVersion = "26.05";
   };
 }
