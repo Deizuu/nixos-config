@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-  flake.nixosModules.desktop = { pkgs, ... }: {
+  flake.nixosModules.desktopEnvironment = { pkgs, ... }: {
     services.xserver.enable = true;
 
 	services.displayManager.gdm.enable = true;
