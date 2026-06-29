@@ -1,4 +1,4 @@
-{
+{ self, inputs, pkgs, ... }: {
   flake.homeConfigurations.user = inputs.home-manager.lib.homeManagerConfiguration {
     imports = with self.homeModules; [
       alacritty
