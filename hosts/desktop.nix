@@ -15,8 +15,8 @@
 
   flake.nixosModules.desktopConfiguration = { pkgs , ... }: {
     imports = [
-	  self.nixosModules.desktopHardware
-	];
+      self.nixosModules.desktopHardware
+    ];
     
     services.automatic-timezoned.enable = true;
 
