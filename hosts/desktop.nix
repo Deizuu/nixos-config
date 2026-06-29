@@ -20,6 +20,8 @@
     ];
     my.user.enable = true;
 
+    programs.zsh.enable = true;
+
     services.automatic-timezoned.enable = true;
 
     networking.hostName = "nixos-desktop";
