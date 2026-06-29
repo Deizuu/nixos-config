@@ -5,6 +5,7 @@
       self.homeModules.userModule
     ];
   };
+
   flake.homeModules.userModule = { pkgs, ... }: {
     imports = with self.homeModules; [
       alacritty
