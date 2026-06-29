@@ -22,6 +22,7 @@
     my.user.enable = true;
 
     programs.zsh.enable = true;
+    programs.steam.enable = true;
 
     services.automatic-timezoned.enable = true;
 

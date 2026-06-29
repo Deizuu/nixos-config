@@ -1,7 +1,10 @@
 {
   flake.homeModules.neovim = { pkgs, ... }: {
-    programs.neovim.plugins = with pkgs.vimPlugins; [
+    programs.neovim = {
+      enable = true;
+      plugins = with pkgs.vimPlugins; [
         LazyVim
-    ];
+      ];
+    };
   };
 }
