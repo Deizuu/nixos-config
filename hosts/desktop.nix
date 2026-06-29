@@ -10,6 +10,7 @@
       nixSettings
       nvidiaKepler
       printing
+      user
     ];
   };
 
@@ -17,7 +18,8 @@
     imports = [
       self.nixosModules.desktopHardware
     ];
-    
+    my.user.enable = true;
+
     services.automatic-timezoned.enable = true;
 
     networking.hostName = "nixos-desktop";
