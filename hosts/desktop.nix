@@ -6,6 +6,7 @@
       audioPipewire
       boot
       desktopEnvironment
+      homeManager
       networking
       nixSettings
       nvidiaKepler

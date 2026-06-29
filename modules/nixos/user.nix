@@ -37,7 +37,7 @@
           isNormalUser = true;
 	  inherit (cfg) description extraGroups shell;
         };
-        home-manager.users.${cfg.name} = self.homeConfigurations.user;
+	home-manager.users.${cfg.name} = self.homeModules.userModule;
       };
     };
 }
