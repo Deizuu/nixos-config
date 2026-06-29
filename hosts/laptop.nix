@@ -21,10 +21,11 @@
     my.user.enable = true;
 
     programs.zsh.enable = true;
+    progsams.git.enablt = true;
 
     services.automatic-timezoned.enable = true;
 
-    networking.hostName = "nixos-desktop";
+    networking.hostName = "the-freed-chromebook";
     system.stateVersion = "26.05";
   };
 }
