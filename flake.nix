@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,22 +13,16 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
   };
 
-  outputs = { self, nixpkgs, ... } @ inputs: {
-    nixosConfigurations = {
-      default = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-		  (./hosts/default/userDefaults.nix)
-		  (./hosts/default/systemDefaults.nix)
-
-          (./hosts/default/configuration.nix)
-		  (./hosts/default/hardware-configuration.nix)
-
-          inputs.home-manager.nixosModules.default
-        ];
-      };
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        inputs.home-manager.flakeModules.home-manager
+        (inputs.import-tree [ ./modules ./hosts ])
+      ];
     };
-  };
 }
