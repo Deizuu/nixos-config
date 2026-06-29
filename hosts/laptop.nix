@@ -21,7 +21,7 @@
     my.user.enable = true;
 
     programs.zsh.enable = true;
-    progsams.git.enablt = true;
+    programs.git.enable = true;
 
     services.automatic-timezoned.enable = true;
 
