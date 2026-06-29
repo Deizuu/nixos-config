@@ -11,6 +11,7 @@
       nixSettings
       nvidiaKepler
       printing
+      steam
       user
     ];
   };
@@ -22,7 +23,7 @@
     my.user.enable = true;
 
     programs.zsh.enable = true;
-    programs.steam.enable = true;
+    programs.git.enable = true;
 
     services.automatic-timezoned.enable = true;
 
