@@ -1,5 +1,6 @@
-{ self, inputs, pkgs, ... }: {
+{ self, inputs, ... }: {
   flake.homeConfigurations.user = inputs.home-manager.lib.homeManagerConfiguration {
+    pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
     imports = with self.homeModules; [
       alacritty
       btop

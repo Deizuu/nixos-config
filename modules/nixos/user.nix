@@ -1,4 +1,4 @@
-{
+{ self, inputs, ... }: {
   flake.nixosModules.user = { config, lib, pkgs, ... }:
     let
       cfg = config.my.user;
@@ -37,6 +37,7 @@
           isNormalUser = true;
 	  inherit (cfg) description extraGroups shell;
         };
+        home-manager.users.${cfg.name} = self.homeConfigurations.user;
       };
     };
 }
