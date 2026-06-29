@@ -12,6 +12,17 @@
       open = false; # Use proprietary driver for better support on older cards
     };
 
+    environment.systemPackages = with pkgs; [
+      nvtopPackages.nvidia
+      mesa
+      vulkan-loader
+      vulkan-validation-layers
+      vulkan-extension-layer
+      vulkan-tools
+      libva
+      libva-utils
+    ];
+
     boot.kernelModules = [ "nvidia" ];
     boot.kernelParams = [ "nvidia-drm.modeset=1" ];
 
