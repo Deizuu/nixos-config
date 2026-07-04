@@ -3,16 +3,22 @@
     modules = with self.nixosModules; [
       vestaConfiguration
       
+      # System
       audioPipewire
       boot
       desktopEnvironment
-      homeManager
       networking
-      nixSettings
       nvidiaKepler
       printing
-      steam
+
+      # Config
+      homeManager
+      musnix
+      nixSettings
       user
+
+      # Programs
+      steam
     ];
   };
 
