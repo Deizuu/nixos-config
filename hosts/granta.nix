@@ -3,13 +3,17 @@
     modules = with self.nixosModules; [
       grantaConfiguration
       
+      # System
       audioPipewire
       boot
       desktopGnome
-      homeManager
       networking
-      nixSettings
       printing
+      
+      # Config
+      homeManager
+      musnix
+      nixSettings
       user
     ];
   };
