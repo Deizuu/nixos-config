@@ -1,24 +1,22 @@
 { self, inputs, ... }: {
-  flake.nixosConfigurations.desktop = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.granta = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
-      desktopConfiguration
+      grantaConfiguration
       
       audioPipewire
       boot
-      desktopEnvironment
+      desktopGnome
       homeManager
       networking
       nixSettings
-      nvidiaKepler
       printing
-      steam
       user
     ];
   };
 
-  flake.nixosModules.desktopConfiguration = { pkgs , ... }: {
+  flake.nixosModules.grantaConfiguration = { pkgs , ... }: {
     imports = [
-      self.nixosModules.desktopHardware
+      self.nixosModules.grantaHardware
     ];
     my.user.enable = true;
 
@@ -27,7 +25,7 @@
 
     services.automatic-timezoned.enable = true;
 
-    networking.hostName = "nixos-desktop";
+    networking.hostName = "granta";
     system.stateVersion = "26.05";
   };
 }

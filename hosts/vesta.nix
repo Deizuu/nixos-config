@@ -1,22 +1,24 @@
 { self, inputs, ... }: {
-  flake.nixosConfigurations.laptop = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.vesta = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
-      laptopConfiguration
+      vestaConfiguration
       
       audioPipewire
       boot
-      desktopGnome
+      desktopEnvironment
       homeManager
       networking
       nixSettings
+      nvidiaKepler
       printing
+      steam
       user
     ];
   };
 
-  flake.nixosModules.laptopConfiguration = { pkgs , ... }: {
+  flake.nixosModules.vestaConfiguration = { pkgs , ... }: {
     imports = [
-      self.nixosModules.laptopHardware
+      self.nixosModules.vestaHardware
     ];
     my.user.enable = true;
 
@@ -25,7 +27,7 @@
 
     services.automatic-timezoned.enable = true;
 
-    networking.hostName = "the-freed-chromebook";
+    networking.hostName = "vesta";
     system.stateVersion = "26.05";
   };
 }

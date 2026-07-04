@@ -2,7 +2,7 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { inputs, ... }: {
-  flake.nixosModules.desktopHardware = { config, lib, pkgs, modulesPath, ... }: {
+  flake.nixosModules.vestaHardware = { config, lib, pkgs, modulesPath, ... }: {
     imports = [
 	  (modulesPath + "/installer/scan/not-detected.nix")
     ];
