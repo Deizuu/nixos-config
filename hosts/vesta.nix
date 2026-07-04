@@ -30,10 +30,6 @@
 
     programs.zsh.enable = true;
     programs.git.enable = true;
-    
-    boot.loader.efi = {
-    efiSysMountPoint = "/boot/efi";
-    };
 
     services.automatic-timezoned.enable = true;
 
