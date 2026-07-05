@@ -25,7 +25,6 @@
       LXVST_PATH  = makePluginPath "lxvst";
       VST_PATH    = makePluginPath "vst";
       VST3_PATH   = makePluginPath "vst3";
-      CLAP_PATH   = makePluginPath "clap";
     };
   };
 }
