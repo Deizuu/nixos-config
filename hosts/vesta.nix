@@ -18,6 +18,7 @@
       user
 
       # Programs
+      proAudio
       steam
     ];
   };

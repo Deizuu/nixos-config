@@ -1,6 +1,6 @@
 {
-  flake.homeModules.proAudio = { pkgs, ... }: {
-    home.packages = with pkgs; [
+  flake.nixosModules.proAudio = { pkgs, ... }: {
+    environment.systemPackages = with pkgs; [
       ardour
       carla
       neural-amp-modeler-lv2

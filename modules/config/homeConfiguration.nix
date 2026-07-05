@@ -12,7 +12,6 @@
       btop
       fonts
       neovim
-      proAudio
       pwJackConfig
       starship
       zsh
