@@ -33,6 +33,8 @@
     systemd.tpm2.enable = false; # Disable TPM2 because of start job wait time
     boot.initrd.systemd.tpm2.enable = false;
 
+    boot.kernelParams = [ "snd_intel_dspcfg.dsp_driver=1" ]; # Fix audio on Comet Lake Chromebook
+
     networking.hostName = "granta";
     system.stateVersion = "26.05";
   };
