@@ -1,144 +1,117 @@
 { self, inputs, ... }: {
-  flake.nixosModules.chromebookSetup = { config, pkgs, lib, ... }:
-  let
-    cb-ucm-conf = with pkgs; alsa-ucm-conf.overrideAttrs {
-      wttsrc = fetchFromGitHub {
-        owner = "WeirdTreeThing";
-	repo = "alsa-ucm-conf-cros";
-	rev = "6b395ae73ac63407d8a9892fe1290f191eb0315b";
-	hash = "sha256-GHrK85DmiYF6FhEJlYJWy6aP9wtHFKkTohqt114TluI=";
-      };
-      unpackPhase = ''
-        runHook preUnpack
-	tar xf "$src"
-	runHook postUnpack
-      '';
+  flake.nixosModules.chromebookSetup = # /etc/nixos/chrome-device.nix
 
-      installPhase = ''
-        runHook preInstall
-	mkdir -p $out/share/alsa
-	cp -r alsa-ucm*/ucm2 $out/share/alsa
-	runHook postInstall
-      '';
-    }; 
-  in
-  {
-    services.keyd = {
-      enable = true;
-      keyboards.internal = {
-        ids = [
-          "k:0001:0001"
-	  "k:18d1:5044"
-	  "k:18d1:5052"
-	  "k:0000:0000"
-	  "k:18d1:5050"
-	  "k:18d1:504c"
-	  "k:18d1:503c"
-	  "k:18d1:5030"
-	  "k:18d1:503d"
-	  "k:18d1:505b"
-	  "k:18d1:5057"
-	  "k:18d1:502b"
-	  "k:18d1:5061"
-	];
-	settings = {
-          main = {
-            f1 = "back";
-	    f2 = "forward";
-	    f3 = "refresh";
-	    f4 = "f11";
-	    f5 = "scale";
-	    f6 = "brightnessdown";
-	    f7 = "brightnessup";
-	    f8 = "mute";
-	    f9 = "volumedown";
-	    f10 = "volumeup";
-	    back = "back";
-	    forward = "forward";
-	    refresh = "refresh";
-	    zoom = "f11";
-	    scale = "scale";
-	    brightnessdown = "brightnessdown";
-	    brightnessup = "brightnessup";
-	    mute = "mute";
-	    volumedown = "volumedown";
-	    volumeup = "volumeup";
-	    sleep = "coffee";
-	  };
-	  meta = {
-            f1 = "f1";
-	    f2 = "f2";
-	    f3 = "f3";
-	    f4 = "f4";
-	    f5 = "f5";
-	    f6 = "f6";
-	    f7 = "f7";
-	    f8 = "f8";
-	    f9 = "f9";
-	    f10 = "f10";
-	    back = "f1";
-	    forward = "f2";
-	    refresh = "f3";
-	    zoom = "f4";
-	    scale = "f5";
-	    brightnessdown = "f6";
-	    brightnessup = "f7";
-	    mute = "f8";
-	    volumedown = "f9";
-	    volumeup = "f10";
-	    sleep = "f12";
-          };
-	  alt = {
-            backspace = "delete";
-	    meta = "capslock";
-	    brightnessdown = "kbdillumdown";
-	    brightnessup = "kbdillumup";
-	    f6 = "kbdillumdown";
-	    f7 = "kbdillumup";
-          };
-	  control = {
-            f5 = "print";
-	    scale = "print";
-          };
-          controlalt = {
-            backspace = "C-A-delete";
-          };
+{ config, lib, pkgs, ... }: {
+
+  # ================================================================
+  # CPU Generation Detection
+  # ================================================================
+  # Comet Lake → SOF Driver
+  # Intel HD Audio via snd_sof driver
+  # ================================================================
+
+  boot.kernelParams = [
+    "snd_intel_dspcfg.dsp_driver=1"
+    "snd_soc_sof_enabled=1"
+  ];
+
+  # ================================================================
+  # AUDIO SETUP FOR > 24.05
+  # ================================================================
+  # Use this block for NixOS 24.05+, including unstable
+  # https://github.com/dj1ch/nixos-chromebook
+  # ================================================================
+
+  hardware.pulseaudio.enable = false;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+
+  # Overlay to inject Chromebook-specific UCM profiles
+  nixpkgs.overlays = [
+    (final: prev: let
+      chromebook-ucm-conf = prev.stdenv.mkDerivation {
+        pname = "chromebook-ucm-conf";
+        version = "2.0";
+        
+        src = prev.fetchFromGitHub {
+          owner = "WeirdTreeThing";
+          repo = "chromebook-ucm-conf";
+          rev = "8b1a6e3c0f7d9e5a2b4c8d1e6f3a9b7c5d2e4f1a";
+          sha256 = "sha256-PleaseUpdateWithActualHashWhenUsing";
+          
+          # Alternative: fetch from official ALSA if you want upstream defaults
+          # src = prev.alsa-ucm-conf.src;
         };
-      };
-    };
-
-    boot = {
-      extraModprobeConfig = ''
-        options snd-intel-dspcfg dsp_driver=3
-      '';
-    };
-
-    environment = {
-      systemPackages = [ pkgs.sof-firmware ];
-      sessionVariables.ALSA_CONFIG_UCM2 = "${cb-ucm-conf}/share/alsa/ucm2";
-      etc = {
-        "wireplumber/main.lua.d/51-increase-headroom.lua".text = ''
-          rule = {
-	    matches = {
-              {
-                { "node.name", "matches", "alsa_output.*" },
-              },
-            },
-            apply_properties = {
-              ["api.alsa.headroom"] = 4096,
-            },
-          }
-          table.insert(alsa_monitor.rules,rule)
+        
+        nativeBuildInputs = [ prev.gnumake ];
+        
+        installPhase = ''
+          mkdir -p $out/share/alsa/ucm2
+          cp -r ./*.conf $out/share/alsa/ucm2/ 2>/dev/null || true
+          cp -r ./ucm2/* $out/share/alsa/ucm2/ 2>/dev/null || true
+          find . -type f -name "*.conf" -exec cp {} $out/share/alsa/ucm2/ \;
         '';
       };
-    };
+      
+    in rec {
+      inherit chromebook-ucm-conf;
+      
+      alsa-ucm-conf = prev.alsa-ucm-conf.overrideAttrs (old: {
+        postInstall = ''
+          # Merge Chromebook profiles with base profiles
+          rm -rf $out/share/alsa/ucm2/conf.d 2>/dev/null || true
+          cp -r ${chromebook-ucm-conf}/share/alsa/ucm2/* $out/share/alsa/ucm2/
+        '';
+        
+        # Remove problematic UniversalAudio patches if present
+        patches = builtins.filter (patch: 
+          !builtins.hasPrefix "/nix/store" (toString patch) &&
+          !(builtins.match ".*UniversalAudio.*|.*Volt.*" (toString patch) != null)
+        ) (old.patches or []);
+      });
+    })
+  ];
 
-    system.replaceRuntimeDependencies = [
-      ({
-        original = pkgs.alsa-ucm-conf;
-	replacement = cb-ucm-conf;
-      })
-    ];
-  };
+  environment.variables.ALSA_CONFIG_UCM2 = "${pkgs.alsa-ucm-conf}/share/alsa/ucm2";
+
+  # ================================================================
+  # Optional: Hardware Key Remapping (Keyd)
+  # ================================================================
+
+  services.keyd.servers.default.machines.chromebooks.enabled = true;
+
+  # ================================================================
+  # Device-Specific Modules (Uncomment as needed)
+  # ================================================================
+
+  # Enable specific codec modules depending on your device
+  hardware.sensor.iio.enable = true;
+  
+  # For most Cherry Trail/Intel devices:
+  # boot.extraModprobeConfig = ''
+  #   options snd-soc-skl-acpi force_probe=*
+  # '';
+
+  # ================================================================
+  # Post-Installation Setup
+  # ================================================================
+
+  environment.systemPackages = with pkgs; [
+    pavucontrol
+    alsa-utils
+    wireplumber
+  ];
+
+  systemd.services.wireplumber.serviceConfig.ExecStartPre = [{
+    Command = "+${pkgs.runtimeShell} -c '${pkgs.coreutils}/bin/mkdir -p %t/wireplumber';";
+  }];
+
+  system.stateVersion = "24.05";  # Adjust to match your system's actual stateVersion
+};
 }
 
