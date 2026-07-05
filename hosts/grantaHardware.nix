@@ -1,44 +1,42 @@
 { inputs, ... }: {
   flake.nixosModules.grantaHardware = { config, lib, pkgs, modulesPath, ... }: {
-    imports =
+  imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-    boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "sdhci_pci" ];
-    boot.initrd.kernelModules = [ ];
-    boot.kernelModules = [ "kvm-intel" ];
-    boot.extraModulePackages = [ ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "sdhci_pci" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.extraModulePackages = [ ];
 
-    fileSystems."/" =
+  fileSystems."/" =
     { device = "/dev/mapper/luks-fd7a5fca-0e91-471b-8ff0-78dc2e0120d0";
       fsType = "btrfs";
     };
 
-    boot.initrd.luks.devices."luks-fd7a5fca-0e91-471b-8ff0-78dc2e0120d0".device = "/dev/disk/by-uuid/fd7a5fca-0e91-471b-8ff0-78dc2e0120d0";
+  boot.initrd.luks.devices."luks-fd7a5fca-0e91-471b-8ff0-78dc2e0120d0".device = "/dev/disk/by-uuid/fd7a5fca-0e91-471b-8ff0-78dc2e0120d0";
 
-    fileSystems."/nix" =
+  fileSystems."/nix" =
     { device = "/dev/mapper/luks-fd7a5fca-0e91-471b-8ff0-78dc2e0120d0";
       fsType = "btrfs";
       options = [ "subvol=nix" ];
     };
 
-    fileSystems."/home" =
+  fileSystems."/home" =
     { device = "/dev/mapper/luks-fd7a5fca-0e91-471b-8ff0-78dc2e0120d0";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };
 
-    fileSystems."/boot" =
+  fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/530D-DB86";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-    swapDevices =
-    [ { device = "/dev/mapper/luks-ed30423b-30b9-4786-a1e6-3bb682d825b6"; }
-    ];
+  swapDevices = [ ];
 
-    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-    hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 }
