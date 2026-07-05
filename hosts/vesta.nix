@@ -26,7 +26,6 @@
     imports = [
       self.nixosModules.vestaHardware
     ];
-    my.user.enable = true;
 
     programs.zsh.enable = true;
     programs.git.enable = true;

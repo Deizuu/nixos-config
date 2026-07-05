@@ -22,7 +22,6 @@
     imports = [
       self.nixosModules.grantaHardware
     ];
-    my.user.enable = true;
 
     programs.zsh.enable = true;
     programs.git.enable = true;

@@ -5,8 +5,6 @@
   in
   {
     options.my.user = {
-      enable = lib.mkEnableOption "Enable user";
-
       name = lib.mkOption {
         type = lib.types.str;
 	default = "deizu";
@@ -32,7 +30,7 @@
       };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = {
       users.users.${cfg.name} = {
         isNormalUser = true;
 	inherit (cfg) description extraGroups shell;
