@@ -12,7 +12,6 @@
       btop
       fonts
       neovim
-      pluginLink
       proAudio
       pwJackConfig
       starship
