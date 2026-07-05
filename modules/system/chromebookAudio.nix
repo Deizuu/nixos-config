@@ -1,30 +1,36 @@
 { self, inputs, ... }: {
   flake.nixosModules.chromebookAudio = { config, pkgs, lib, ... }:
-  let
-    cb-ucm-conf = with pkgs; alsa-ucm-conf.overrideAttrs {
-      wttsrc = fetchFromGitHub {
-        owner = "WeirdTreeThing";
-	repo = "alsa-ucm-conf-cros";
-	rev = "6b395ae73ac63407d8a9892fe1290f191eb0315b";
-        hash = "sha256-GHrK85DmiYF6FhEJlYJWy6aP9wtHFKkTohqt114TluI=";
-      };
-      unpackPhase = ''
-        runHook preUnpack
-	tar xf "$src"
-	runHook postUnpack
-      '';
-      installPhase = ''
-        runHook preInstall
-	mkdir -p $out/share/alsa
-	cp -r alsa-ucm*/ucm2 $out/share/alsa
-	runHook postInstall
+	#  let
+	#    cb-ucm-conf = with pkgs; alsa-ucm-conf.overrideAttrs {
+	#      wttsrc = fetchFromGitHub {
+	#        owner = "WeirdTreeThing";
+	# repo = "alsa-ucm-conf-cros";
+	# rev = "a4e92135fd49e669b5ce096439289e05e25ae90c";
+	#        hash = "sha256-3TpzjmWuOn8+eIdj0BUQk2TeAU7BzPBi3FxAmZ3zkN8=";
+	#      };
+	#      unpackPhase = ''
+	#        runHook preUnpack
+	# tar xf "$src"
+	# runHook postUnpack
+	#      '';
+	#      installPhase = ''
+	#        runHook preInstall
+	# mkdir -p $out/share/alsa
+	# cp -r alsa-ucm*/ucm2 $out/share/alsa
+	# runHook postInstall
+	#      '';
+	#    };
+  # in
+  {
+    boot = {
+      extraModprobeConfig = ''
+        options snd-intel-dspcfg dsp_driver=3
       '';
     };
-  in
-  {
+
     environment = {
       systemPackages = [ pkgs.sof-firmware ];
-      sessionVariables.ALSA_CONFIG_UCM2 = "${cb-ucm-conf}/share/alsa/ucm2";
+      # sessionVariables.ALSA_CONFIG_UCM2 = "${cb-ucm-conf}/share/alsa/ucm2";
       etc = {
         "wireplumber/main.lua.d/51-increase-headroom.lua".text = ''
           rule = {
@@ -43,11 +49,11 @@
       };
     };
 
-    system.replaceDependencies.replacements = [
-      ({
-        original = pkgs.alsa-ucm-conf;
-	replacement = cb-ucm-conf;
-      })
-    ];
+	#    system.replaceDependencies.replacements = [
+	#      ({
+	#        original = pkgs.alsa-ucm-conf;
+	# replacement = cb-ucm-conf;
+	#      })
+	#    ];
   };
 }
