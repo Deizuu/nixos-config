@@ -8,5 +8,9 @@
       variant = "colemak_dh_ortho";
       options = "grp:alt_shift_toggle";
     };
+
+    environment.systemPackages = with pkgs; {
+      xwayland
+    };
   };
 }
