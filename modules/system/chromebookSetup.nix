@@ -107,15 +107,31 @@
       };
     };
 
-    # add your audio setup modprobes here
+    boot = {
+      extraModprobeConfig = ''
+        options snd-intel-dspcfg dsp_driver=3
+      '';
+    };
 
     environment = {
       systemPackages = [ pkgs.sof-firmware ];
       sessionVariables.ALSA_CONFIG_UCM2 = "${cb-ucm-conf}/share/alsa/ucm2";
-      # AUDIO SETUP FOR < 23.11 AND UNSTABLE
+      etc = {
+        "wireplumber/main.lua.d/51-increase-headroom.lua".text = ''
+          rule = {
+	    matches = {
+              {
+                { "node.name", "matches", "alsa_output.*" },
+              },
+            },
+            apply_properties = {
+              ["api.alsa.headroom"] = 4096,
+            },
+          }
+          table.insert(alsa_monitor.rules,rule)
+        '';
+      };
     };
-
-    # AUDIO SETUP FOR > 24.05
 
     system.replaceRuntimeDependencies = [
       ({
