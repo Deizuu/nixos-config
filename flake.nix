@@ -23,15 +23,5 @@
   };
 
   outputs = inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
-      {
-        imports = [
-	  inputs.home-manager.flakeModules.home-manager
-        ];
-
-	config.systems = [
-          "x86_64-linux"
-	];
-      } // (inputs.import-tree [ ./modules ./hosts ])
-    );
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree [ ./modules ./hosts ]);
 }
