@@ -10,7 +10,7 @@
     };
 
     environment.systemPackages = with pkgs; [
-      xwayland
+      pkgs.qt5.qtwayland
     ];
   };
 }
