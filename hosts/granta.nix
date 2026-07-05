@@ -15,9 +15,6 @@
       musnix
       nixSettings
       user
-
-      # Programs
-      proAudio
     ];
   };
 
