@@ -5,7 +5,7 @@
       
       # System
       audioPipewire
-      boot
+      bootGranta
       desktopGnome
       networking
       printing
@@ -28,6 +28,8 @@
     programs.git.enable = true;
 
     services.automatic-timezoned.enable = true;
+
+    systemd.tpm2.enable = false; # Disable TPM2 because of start job wait time
 
     networking.hostName = "granta";
     system.stateVersion = "26.05";

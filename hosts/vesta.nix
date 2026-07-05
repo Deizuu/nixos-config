@@ -5,7 +5,7 @@
       
       # System
       audioPipewire
-      boot
+      bootVesta
       desktopEnvironment
       networking
       nvidiaKepler
