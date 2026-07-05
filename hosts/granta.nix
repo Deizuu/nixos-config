@@ -6,7 +6,6 @@
       # System
       audioPipewire
       bootGranta
-      chromebookAudio
       desktopGnome
       networking
       printing
