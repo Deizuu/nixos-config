@@ -9,8 +9,8 @@
       options = "grp:alt_shift_toggle";
     };
 
-    environment.systemPackages = with pkgs; {
+    environment.systemPackages = with pkgs; [
       xwayland
-    };
+    ];
   };
 }
