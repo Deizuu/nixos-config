@@ -43,7 +43,7 @@
       };
     };
 
-    system.replaceRuntimeDependencies = [
+    system.replaceDependencies.replacements = [
       ({
         original = pkgs.alsa-ucm-conf;
 	replacement = cb-ucm-conf;
