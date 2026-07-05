@@ -23,18 +23,15 @@
   };
 
   outputs = inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [
-        # Add home-manager options to flake-parts
-	inputs.home-manager.flakeModules.home-manager
-      ];
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
+      {
+        imports = [
+	  inputs.home-manager.flakeModules.home-manager
+        ];
 
-      perSystem = _: {
-        systems = [
-	  "x86_64-linux"
+	config.systems = [
+          "x86_64-linux"
 	];
-      };
-
-      flake = (inputs.import-tree [ ./modules ./hosts ]);
-    };
+      } // (inputs.import-tree [ ./modules ./hosts ])
+    );
 }
