@@ -30,6 +30,7 @@
     services.automatic-timezoned.enable = true;
 
     systemd.tpm2.enable = false; # Disable TPM2 because of start job wait time
+    boot.initrd.systemd.tpm2.enable = false;
 
     networking.hostName = "granta";
     system.stateVersion = "26.05";
