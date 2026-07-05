@@ -1,9 +1,9 @@
 {
-  flake.homeModules.pwJackConfig = { pkgs, ... }: {
-    services.pipewire.jackConfigs = {
-      "99-latency" = {
+  flake.nixosModules.pwJackConfig = { pkgs, ... }: {
+    services.pipewire.extraConfig.jack = {
+      "99-low-latency" = {
         "jack.properties" = {
-          "node.latency" = "256/48000";
+          "node.latency" = 256/48000;
         };
       };
     };

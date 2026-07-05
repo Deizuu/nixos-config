@@ -14,6 +14,7 @@
       homeManager
       musnix
       nixSettings
+      pwJackConfig
       user
     ];
   };
