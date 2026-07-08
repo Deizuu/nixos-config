@@ -28,6 +28,8 @@
     programs.zsh.enable = true;
     programs.git.enable = true;
 
+    programs.nix-ld.enable = true; # Allow running unpackaged executables
+
     services.automatic-timezoned.enable = true;
 
     systemd.tpm2.enable = false; # Disable TPM2 because of start job wait time

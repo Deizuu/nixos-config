@@ -31,6 +31,8 @@
     programs.zsh.enable = true;
     programs.git.enable = true;
 
+    programs.nix-ld.enable = true; # Allow running unpackaged executables
+
     services.automatic-timezoned.enable = true;
 
     networking.hostName = "vesta";
