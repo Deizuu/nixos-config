@@ -33,6 +33,10 @@
 
     programs.nix-ld.enable = true; # Allow running unpackaged executables
 
+    environment.systemPackages = with pkgs; [ # Add Vial to configure keyboard
+      vial
+    ];
+
     services.automatic-timezoned.enable = true;
 
     networking.hostName = "vesta";
