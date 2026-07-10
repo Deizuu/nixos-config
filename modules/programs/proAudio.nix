@@ -8,7 +8,7 @@
       guitarix # Plugin host & pack
       helvum # Patchbay
       lsp-plugins # Plugin pack
-      neural-amp-modeler-lv2 # Plugin
+      ratatouille-lv2 # Plugin
       vocproc # Plugin
     ];
   };
