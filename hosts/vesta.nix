@@ -36,6 +36,7 @@
     environment.systemPackages = with pkgs; [ # Add Vial to configure keyboard
       vial
       clonehero
+      osu-lazer-bin
     ];
     services.udev.packages = with pkgs; [ # Add udev rule for Vial to access devices
       vial
