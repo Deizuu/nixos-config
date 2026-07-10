@@ -32,6 +32,7 @@
 
     programs.zsh.enable = true;
     programs.git.enable = true;
+    programs.appimage.enable = true;
 
     programs.nix-ld.enable = true; # Allow running unpackaged executables
 
