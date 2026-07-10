@@ -21,6 +21,8 @@
       vulkan-tools
       libva
       libva-utils
+      dxvk
+      dxvk_1
     ];
 
     boot.kernelModules = [ "nvidia" ];
