@@ -16,6 +16,7 @@
       homeManager
       musnix
       nixSettings
+      overlays
       pwJackConfig
       user
 
