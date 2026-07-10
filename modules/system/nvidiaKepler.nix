@@ -22,7 +22,7 @@
       libva
       libva-utils
       dxvk
-      dxvk_1
+      dxvk_2
     ];
 
     boot.kernelModules = [ "nvidia" ];
