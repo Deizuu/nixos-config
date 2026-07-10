@@ -10,6 +10,7 @@
       networking
       nvidiaKepler
       printing
+      tabletDriver
 
       # Config
       homeManager
