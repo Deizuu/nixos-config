@@ -1,5 +1,6 @@
 {
-  flake.nixosModules.pwJackConfig = { pkgs, ... }: {
+  flake.modules.nixos.pc = { pkgs, ... }: {
+    services.pipewire.jack.enable = true;
     services.pipewire.extraConfig.jack = {
       "99-low-latency" = {
         "jack.properties" = {

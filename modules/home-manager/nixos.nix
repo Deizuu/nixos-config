@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
   # Importing and configuring home-manager
-  flake.nixosModules.homeManager = { pkgs, ... }: {
+  flake.modules.nixos.base = {
     imports = [
       inputs.home-manager.nixosModules.default # Import official home-manager NixOS module
     ];

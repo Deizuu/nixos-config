@@ -1,12 +1,11 @@
 { self, inputs, ... }: {
-  flake.nixosModules.audioPipewire = { pkgs, ... }: {
+  flake.modules.nixos.pc = { pkgs, ... }: {
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      jack.enable = true;
     };
   };
 }

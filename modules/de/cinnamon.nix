@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-  flake.nixosModules.desktopEnvironment = { pkgs, ... }: {
+  flake.modules.nixos.cinnamon = { pkgs, ... }: {
     services.xserver.enable = true;
 
     services.xserver.displayManager.lightdm.enable = true;

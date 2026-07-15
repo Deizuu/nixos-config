@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-  flake.nixosModules.desktopGnome = { pkgs, ... }: {
+  flake.modules.nixos.gnome = { pkgs, ... }: {
     services.displayManager.gdm.enable = true;
     services.desktopManager.gnome.enable = true;
     

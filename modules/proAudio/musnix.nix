@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.nixosModules.musnix = { pkgs, ... }: {
+  flake.modules.nixos.proAudio = { pkgs, ... }: {
     imports = [
       inputs.musnix.nixosModules.musnix
     ];

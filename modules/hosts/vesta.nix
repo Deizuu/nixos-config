@@ -30,11 +30,8 @@
       self.nixosModules.vestaHardware
     ];
 
-    programs.zsh.enable = true;
     programs.git.enable = true;
     programs.appimage.enable = true;
-
-    programs.nix-ld.enable = true; # Allow running unpackaged executables
 
     environment.systemPackages = with pkgs; [ # Add Vial to configure keyboard
       vial
@@ -44,6 +41,8 @@
     services.udev.packages = with pkgs; [ # Add udev rule for Vial to access devices
       vial
     ];
+
+    boot.kernelPackages = pkgs.linuxPackages_6_6;
 
     services.automatic-timezoned.enable = true;
 

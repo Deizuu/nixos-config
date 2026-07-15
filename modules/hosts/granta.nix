@@ -25,12 +25,11 @@
       self.nixosModules.grantaHardware
     ];
 
-    programs.zsh.enable = true;
     programs.git.enable = true;
 
-    programs.nix-ld.enable = true; # Allow running unpackaged executables
-
     services.automatic-timezoned.enable = true;
+    
+    boot.kernelPackages = pkgs.linuxPackages_latest;
 
     systemd.tpm2.enable = false; # Disable TPM2 because of start job wait time
     boot.initrd.systemd.tpm2.enable = false;
