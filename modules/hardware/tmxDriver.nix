@@ -1,6 +1,6 @@
 { 
   nixos.modules.tmxDriver = { pkgs, ... }: {
-    boot.extraModulePackages = [ pkgs.linuxPackages.hid-t150 ];
+    boot.extraModulePackages = [ pkgs.linuxKernel.packages.linux_6_6.hid-t150 ];
     boot.kernelModules = [ "hid-t150" ];
 
     services.udev.extraRules = ''
