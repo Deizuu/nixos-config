@@ -1,7 +1,11 @@
-{ 
+{
   nixos.modules.tmxDriver = { pkgs, ... }: {
-    boot.extraModulePackages = [ pkgs.linuxKernel.packages.linux_6_6.hid-t150 ];
-    boot.kernelModules = [ "hid-t150" ];
+    boot.extraModulePackages = [
+      (pkgs.callPackage ./tmx-driver.nix { })
+      (pkgs.callPackage ./t150_driver.nix { })
+    ];
+    boot.kernelModules = [ "tmx_driver" "hid-t150" ];
+    boot.blacklistedKernelModules = [ "hid_thrustmaster" ];
 
     services.udev.extraRules = ''
       # Allow non-root access to the wheel
