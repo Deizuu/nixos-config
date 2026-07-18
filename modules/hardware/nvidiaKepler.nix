@@ -22,9 +22,6 @@
     boot.kernelModules = [ "nvidia" ];
     boot.kernelParams = [ "nvidia-drm.modeset=1" ];
 
-    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "nvidia-x11" "cuda_nvml_dev"
-    ];
   };
 
   perSystem = {
