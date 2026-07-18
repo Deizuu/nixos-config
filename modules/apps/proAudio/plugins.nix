@@ -1,11 +1,11 @@
 {
-  flake.homeModules.proAudio = { pkgs, lib, ... }: {
+  my.user.home.gui = { pkgs, ... }: {
     home.packages = with pkgs; [
       calf
       guitarix
       lsp-plugins
       ratatouille-lv2
-      vocproc
+      neural-amp-modeler-lv2
     ];
   };
 }

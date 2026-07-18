@@ -1,9 +1,7 @@
 {
-  flake.homeModules.alacritty = { pkgs, ... }: {
+  my.user.home.gui = {
     programs.alacritty = {
       enable = true;
-      settings = { }; # insert here future config
     };
   };
 }
-	

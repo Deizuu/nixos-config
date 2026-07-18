@@ -1,12 +1,17 @@
-{ self, inputs, ... }:
 {
-  flake.nixosModules.base = {
-    boot.loader.grub = {
-      enable = true;
-      device = "nodev"; # Use EFI partition (automatically detected from /boot mount)
-      efiSupport = true;
+  nixos.modules = {
+    base = {
+      boot.loader.grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+      };
+
+      boot.loader.efi.canTouchEfiVariables = true;
     };
 
-    boot.loader.efi.canTouchEfiVariables = true;
+    pc = {
+      boot.plymouth.enable = true;
+    };
   };
 }

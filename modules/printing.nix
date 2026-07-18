@@ -1,5 +1,15 @@
-{ self, inputs, ... }: {
-  flake.nixosModules.printing = { pkgs, ... }: {
-    services.printing.enable = true;
+{ config, ... }: {
+  nixos.modules.pc = { pkgs, ... }: {
+    services.printing = {
+      enable = true;
+
+      drivers = with pkgs; [
+        gutenprint
+	hplip
+	splix
+      ];
+    };
+
+    users.users.${config.my.user.name}.extraGroups = [ "lpadmin" ];
   };
 }

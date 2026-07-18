@@ -1,5 +1,5 @@
-{ self, inputs, ... }: {
-  flake.nixosModules.chromebookSetup = { config, lib, pkgs, ... }:
+{
+  nixos.modules.chromebookAudioFix = { config, lib, pkgs, ... }:
   let
     alsa-ucm-conf-cros = pkgs.fetchFromGitHub {
       owner = "WeirdTreeThing";

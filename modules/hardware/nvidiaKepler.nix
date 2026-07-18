@@ -1,33 +1,30 @@
-{ self, inputs, ... }: {
-  flake.nixosModules.nvidiaKepler = { config, pkgs, ... }: {
-    # Enable X server with NVIDIA driver (Kepler pretty much only supports X11)
-    services.xserver.enable = true;
+{
+  nixos.modules.nvidiaKepler = { pkgs, lib, ... }: {
     services.xserver.videoDrivers = [ "nvidia" ];
 
-    # NVIDIA driver configuration
     hardware.nvidia = {
       package = pkgs.linuxKernel.packages.linux_6_6.nvidia_x11_legacy470;
       modesetting.enable = true;
       powerManagement.enable = true;
-      open = false; # Use proprietary driver for better support on older cards
+      open = false;
     };
 
     environment.systemPackages = with pkgs; [
       nvtopPackages.nvidia
-      mesa
-      vulkan-loader
-      vulkan-validation-layers
-      vulkan-extension-layer
-      vulkan-tools
-      libva
-      libva-utils
+      
       dxvk
       dxvk_2
+      libva
+      vulkan-loader
+      vulkan-tools
     ];
 
     boot.kernelModules = [ "nvidia" ];
     boot.kernelParams = [ "nvidia-drm.modeset=1" ];
 
     nixpkgs.config.nvidia.acceptLicense = true;
+    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "nvidia-x11" "cuda_nvml_dev"
+    ];
   };
 }

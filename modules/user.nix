@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, inputs, ... }:
 let
   cfg = config.my.user;
 in
@@ -7,27 +7,39 @@ in
     name = lib.mkOption {
       type = lib.types.str;
       default = "deizu";
-      description = "User name";
     };
 
     description = lib.mkOption {
       type = lib.types.str;
       default = "Deizu";
-      description = "User description (usually full name)";
     };
 
     extraGroups = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [ "wheel" ];
-      description = "Extra groups for the user";
+    };
+
+    home = {
+      base = lib.mkOption {
+        type = lib.types.deferredModule;
+      };
+      gui = lib.mkOption {
+        type = lib.types.deferredModule;
+      };
     };
   };
 
   config = {
-    flake.modules.nixos.base = {
+    my.user.home = {inherit (config.homeManager.modules) base gui;};
+
+    nixos.modules.base = {
       users.users.${cfg.name} = {
         isNormalUser = true;
-        inherit (cfg) description extraGroups;
+	inherit (cfg) description extraGroups;
+      };
+
+      home-manager.users.${cfg.name} = {
+        imports = [ cfg.home.base ];
       };
     };
   };

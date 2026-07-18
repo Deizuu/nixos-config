@@ -1,17 +1,5 @@
-{ self, inputs, ... }: {
-  flake.modules.nixos.gnome = { pkgs, ... }: {
-    services.displayManager.gdm.enable = true;
+{
+  nixos.modules.gnome = {
     services.desktopManager.gnome.enable = true;
-    
-    services.xserver.enable = true;
-    services.xserver.xkb = {
-      layout = "us";
-      variant = "colemak_dh_ortho";
-      options = "grp:alt_shift_toggle";
-    };
-
-    environment.systemPackages = with pkgs; [
-      pkgs.qt5.qtwayland
-    ];
   };
 }
