@@ -42,5 +42,11 @@ in
         imports = [ cfg.home.base ];
       };
     };
+
+    nixos.modules.pc = {
+      home-manager.users.${cfg.name} = {
+        imports = [ cfg.home.gui ];
+      };
+    };
   };
 }
