@@ -5,12 +5,12 @@
       settings.Resolve = {
         DNSOverTls = "opportunistic";
 	DNS = [
-          #DNS=194.242.2.2#dns.mullvad.net
-          #DNS=194.242.2.3#adblock.dns.mullvad.net
-          #DNS=194.242.2.4#base.dns.mullvad.net
-          #DNS=194.242.2.5#extended.dns.mullvad.net
-          DNS=194.242.2.6#family.dns.mullvad.net
-          #DNS=194.242.2.9#all.dns.mullvad.net
+          #"194.242.2.2"#dns.mullvad.net
+          #"194.242.2.3"#adblock.dns.mullvad.net
+          #"194.242.2.4"#base.dns.mullvad.net
+          #"194.242.2.5"#extended.dns.mullvad.net
+          "194.242.2.6"#family.dns.mullvad.net
+          #"194.242.2.9"#all.dns.mullvad.net
 	];
       };
     };
