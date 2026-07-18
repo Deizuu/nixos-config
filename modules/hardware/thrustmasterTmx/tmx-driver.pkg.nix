@@ -1,8 +1,10 @@
 {
   stdenv,
-  linuxKernel,
-  fetchFromGitHub
-}: linuxKernel.buildExternalModule {
+  fetchFromGitHub,
+  linuxHeaders,
+  kernel,
+  kernelModuleMakeFlags
+}: stdenv.mkDerivation rec {
   pname = "tmx-driver";
   version = "unstable";
   
@@ -13,14 +15,16 @@
     sha256 = "1hcy2rhpa3kzpmd0rssk80pfpq03vlc8annci8lnwnrdl68msc8y";  # Prefetch hash
   };
   
-  postPatch = ''
-    sed -i '/depmod -A/d' Makefile
+  nativeBuildInputs = kernel.moduleBuildDependencies;
+
+  sourceRoot = "${src.name}";
+
+  makeFlags = kernelModuleMakeFlags ++ [
+    "KDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+    "INSTALL_MOD_PATH=${placeholder "out"}"
+  ];
+
+  installPhase = ''
+    make -C ${kernel.dev}/lib/modules/${kernel.modDirVersion}/build M=$(pwd) modules_install $makeFlags
   '';
-  
-  meta = with stdenv.lib; {
-    description = "Linux Kernel Module for Thrustmaster TMX Racing Wheel";
-    homepage = "https://github.com/emtek995/TMX-driver";
-    license = licenses.gpl2;
-    platforms = platforms.linux;
-  };
 }
