@@ -1,8 +1,8 @@
 {
   nixos.modules.tmxDriver = { pkgs, ... }: {
     boot.extraModulePackages = [
-      (pkgs.callPackage ./tmx-driver.nix { })
-      (pkgs.callPackage ./t150_driver.nix { })
+      (pkgs.callPackage ./tmx-driver.pkg.nix { })
+      (pkgs.callPackage ./t150_driver.pkg.nix { })
     ];
     boot.kernelModules = [ "tmx_driver" "hid-t150" ];
     boot.blacklistedKernelModules = [ "hid_thrustmaster" ];
