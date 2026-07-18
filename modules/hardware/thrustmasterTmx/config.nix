@@ -16,6 +16,9 @@
 
       # Allow non-root access to input events from the wheel
       SUBSYSTEM=="input", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="b67f", MODE="0666", TAG+="uaccess"
+      
+      # Allow non-root write access to wheel range/gain sysfs attributes
+      SUBSYSTEM=="hid", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="b67f", MODE="0666", GROUP="input"
 
       # Set default range and gain when driver attaches (range -> [ 270; 900 ], gain -> [ 0;65535 ])
       SUBSYSTEM=="hid", ATTRS{driver}=="hid-t150", ATTR{range}="900", ATTR{gain}="65535"
