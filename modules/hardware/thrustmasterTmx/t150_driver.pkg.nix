@@ -1,9 +1,7 @@
 {
   stdenv,
-  fetchFromGitHub,
-  linuxHeaders,
-  kernel,
-  kernelModuleMakeFlags
+  linuxKernel,
+  fetchFromGitHub
 }: stdenv.mkDerivation rec {
   pname = "t150_driver";
   version = "1.0";
