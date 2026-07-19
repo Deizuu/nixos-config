@@ -29,7 +29,6 @@
 
     stylix.targets.zen-browser = {
       profileNames = [ "Default User" ];
-      enableCss = false;
     };
   };
 }
