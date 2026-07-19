@@ -8,17 +8,15 @@
   config = {
     flake-file.inputs.home-manager = {
       url = "github:nix-community/home-manager";
-      flake = false;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    _module.args.homeManager = import "${inputs.home-manager}/lib" {inherit lib;};
-    
     homeManager.modules.base = { osConfig, ... }: {
       home.stateVersion = osConfig.system.stateVersion;
     };
 
     nixos.modules.base = {
-      imports = [ "${inputs.home-manager}/nixos" ];
+      imports = [ inputs.home-manager.nixosModules.home-manager ];
 
       home-manager = {
         backupFileExtension = ".backup";

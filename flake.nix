@@ -15,7 +15,7 @@
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      flake = false;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";
     musnix = {
