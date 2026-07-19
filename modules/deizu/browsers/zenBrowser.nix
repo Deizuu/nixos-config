@@ -16,6 +16,5 @@
       enable = true;
       setAsDefaultBrowser = true;
     };
-    stylix.targets.zen-browser.profileNames = [ "Default" ];
   };
 }
