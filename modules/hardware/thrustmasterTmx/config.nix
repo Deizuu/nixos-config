@@ -7,6 +7,15 @@
     boot.kernelModules = [ "tmx_driver" "hid-t150" ];
     boot.blacklistedKernelModules = [ "hid_thrustmaster" ];
 
+    services.xserver.inputClassSections = [
+    ''
+    Identifier "Thrustmaster TMX"
+    MatchProduct "Thrustmaster"
+    Option "Calibration" "0 65535 0 65535"
+    Option "IgnoreRelativeAxes" "off"
+    ''
+    ];
+
     services.udev.extraRules = ''
       # Allow non-root access to the wheel (USB)
       ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="b67f", MODE="0666", TAG+="uaccess"
