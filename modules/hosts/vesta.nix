@@ -8,7 +8,7 @@
       cinnamon
       lightdm
       nvidiaKepler
-      tmxDriver
+      tmxDrivers
     ];
 
     boot.kernelPackages = pkgs.linuxPackages_6_6;

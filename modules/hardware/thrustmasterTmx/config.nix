@@ -1,5 +1,5 @@
 {
-  nixos.modules.tmxDriver = { pkgs, config, ... }: {
+  nixos.modules.tmxDrivers = { pkgs, config, ... }: {
     boot.extraModulePackages = [
       (config.boot.kernelPackages.callPackage ./tmx-driver.pkg.nix { })
       (config.boot.kernelPackages.callPackage ./t150_driver.pkg.nix { })
