@@ -22,11 +22,6 @@
 	  default = "ddg";
 	};
 	settings = {
-	  "browser.theme.toolbar-theme" = 0;
-	  "browser.theme.content-theme" = 0;
-	  "layout.css.prefers-color-scheme.content-override" = 0;
-	  "browser.theme.dark-private-window" = true;
-
 	  "zen.welcome-screen.seen" = true;
 	};
       };
