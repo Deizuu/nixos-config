@@ -8,3 +8,4 @@
 - Stylix
 - Nixvim
 - Set resolution on Nvidia X Server
+- Fix ThrustmasterTMX deadzone (modules/hardware/thrustmasterTmx/deadzoneFix.nix not working)
