@@ -30,5 +30,6 @@
     stylix.targets.zen-browser = {
       profileNames = [ "Default User" ];
     };
+    stylix.targets.zen-browser.profileNames = [ "Default" ];
   };
 }
