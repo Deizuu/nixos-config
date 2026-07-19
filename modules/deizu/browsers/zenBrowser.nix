@@ -7,7 +7,11 @@
     };
   };
 
-  my.user.home.gui = {
+  my.user.home.gui =
+  let
+    zenProfile = "Default User";
+  in
+  {
     imports = [
       inputs.zen-browser.homeModules.beta
     ];
@@ -15,7 +19,17 @@
     programs.zen-browser = {
       enable = true;
       setAsDefaultBrowser = true;
+      profiles."Default User" = {
+        search = {
+	  force = true;
+	  default = "ddg";
+	};
+      };
     };
-    stylix.targets.zen-browser.profileNames = [ "Default" ];
+
+    stylix.targets.zen-browser = {
+      profileNames = [ "Default User" ];
+      enableCss = false;
+    };
   };
 }
