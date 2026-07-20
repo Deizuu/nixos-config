@@ -1,6 +1,6 @@
 {
   my.user.home.base = { pkgs, ... }: {
-    home.packages = [ pkgs.treesitter ];
+    home.packages = [ pkgs.tree-sitter ];
     programs.nvf.settings.vim = {
       languages = {
         enableFormat = true;
