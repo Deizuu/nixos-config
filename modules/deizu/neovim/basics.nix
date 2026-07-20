@@ -9,9 +9,7 @@
       settings.vim = {
         viAlias = true;
         vimAlias = true;
-        lsp = {
-	        enable = true;
-        };
+        lsp.enable = true;
       };
     };
   };
