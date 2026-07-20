@@ -4,8 +4,8 @@
     services.pipewire.extraConfig.jack = {
       "99-low-latency" = {
         "jack.properties" = {
-	  "node.latency" = "512/480000";
-	};
+	        "node.latency" = "512/48000";
+	      };
       };
     };
   };
