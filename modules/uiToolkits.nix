@@ -3,6 +3,6 @@
     gtk.enable = true;
     qt.enable = true;
 
-    stylix.targets.qt.platform = "adwaita";
+    stylix.targets.qt.platform = "qtct";
   };
 }
