@@ -10,8 +10,6 @@
       gnome
     ];
 
-    boot.kernelPackages = pkgs.linuxPackages_latest;
-
     networking.hostName = "granta";
     system.stateVersion = "26.05";
   };

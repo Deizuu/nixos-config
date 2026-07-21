@@ -3,7 +3,7 @@
     services.xserver.videoDrivers = [ "nvidia" ];
 
     hardware.nvidia = {
-      package = pkgs.linuxKernel.packages.linux_6_6.nvidia_x11_legacy470;
+      package = pkgs.linuxKernel.packages.nvidia_x11_legacy470;
       modesetting.enable = true;
       powerManagement.enable = true;
       open = false;

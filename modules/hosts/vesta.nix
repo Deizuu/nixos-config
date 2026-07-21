@@ -11,8 +11,6 @@
       tmxDrivers
     ];
 
-    boot.kernelPackages = pkgs.linuxPackages_6_6;
-
     networking.hostName = "vesta";
     system.stateVersion = "26.05";
   };
