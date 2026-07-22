@@ -1,5 +1,5 @@
 {
-  my.home.user.gui = {
+  my.user.home.gui = {
     programs.distrobox.enable = true;
   };
 }
