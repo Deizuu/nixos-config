@@ -3,7 +3,7 @@
     stylix.fonts = {
       monospace = {
         package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono";
+        name = "JetBrainsMono Nerd Font";
       };
       sansSerif = {
         package = pkgs.vegur;
