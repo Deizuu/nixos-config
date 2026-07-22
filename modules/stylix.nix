@@ -12,7 +12,7 @@
     stylix = {
       enable = true;
 
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/catpuccin-macchiato.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
       image = pkgs.fetchurl {
         url = "https://getwallpapers.com/wallpaper/full/f/b/3/6032.jpg"; # TODO change wallpaper, this is a temp
 	hash = "sha256-NdtooA+oODFnEdUeEwxlErVnFICt8JSzc9IMa8xLFxI=";
