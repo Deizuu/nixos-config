@@ -6,8 +6,8 @@
         name = "JetBrainsMono Nerd Font Mono";
       };
       sansSerif = {
-        package = pkgs.vegur;
-        name = "Vegur";
+        package = pkgs.redhat-official-fonts;
+        name = "Red Hat Text";
       };
       serif = {
         package = pkgs.dejavu_fonts;
