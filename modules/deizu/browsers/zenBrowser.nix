@@ -7,8 +7,7 @@
     };
   };
 
-  my.user.home.gui =
-  {
+  my.user.home.gui = {
     imports = [
       inputs.zen-browser.homeModules.beta
     ];
@@ -16,14 +15,14 @@
     programs.zen-browser = {
       enable = true;
       setAsDefaultBrowser = true;
-      profiles."w44kf3ur.Default (release)" = {
+      profiles."Default" = {
         search = {
-	  force = true;
-	  default = "ddg";
-	};
-	settings = {
-	  "zen.welcome-screen.seen" = true;
-	};
+          force = true;
+          default = "ddg";
+        };
+        settings = {
+          "zen.welcome-screen.seen" = true;
+        };
       };
     };
   };
