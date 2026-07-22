@@ -5,7 +5,7 @@
 
       pc
 
-      cinnamon
+      plasma
       lightdm
       nvidiaKepler
       tmxDrivers
