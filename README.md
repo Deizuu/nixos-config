@@ -6,3 +6,4 @@
 
 ## TODO
 - Fix ThrustmasterTMX deadzone (modules/hardware/thrustmasterTmx/deadzoneFix.nix not working)
+- [Declarative Flatpak](https://github.com/in-a-dil-emma/declarative-flatpak)
