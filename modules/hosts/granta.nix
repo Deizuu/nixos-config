@@ -11,8 +11,8 @@
     ];
     
     # Disable TPM2 to fix boot waiting time
-    boot.initrd.systemd.tpm2.enable = true;
-    systemd.tpm2.enable = true;
+    boot.initrd.systemd.tpm2.enable = false;
+    systemd.tpm2.enable = false;
 
     networking.hostName = "granta";
     system.stateVersion = "26.05";
