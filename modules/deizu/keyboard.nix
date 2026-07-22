@@ -7,12 +7,11 @@
     };
 
     dconf.settings = {
-      "org/cinnamon/desktop/input-sources" = {
-        sources = [
-          (lib.hm.gvariant.mkTuple [ "xkb" "us+colemak_dh_ortho" ])
-          (lib.hm.gvariant.mkTuple [ "xkb" "fr" ])
-        ];
-        xkb-options = ["grp:alt_shift_toggle"];
+      "org/kde/kcmm/keyboards/general" = {
+        layout = "us,fr";
+        variants = "colemak_dh_ortho_,us";
+        options = "grp:alt_shift_toggle";
+        model = "";
       };
     };
   };
