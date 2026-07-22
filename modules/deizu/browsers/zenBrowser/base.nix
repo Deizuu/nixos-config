@@ -11,22 +11,13 @@
     imports = [
       inputs.zen-browser.homeModules.beta
     ];
-    
+
     stylix.targets.zen-browser.profileNames = [
       "Default"
     ];
     programs.zen-browser = {
       enable = true;
       setAsDefaultBrowser = true;
-      profiles."Default" = {
-        search = {
-          force = true;
-          default = "ddg";
-        };
-        settings = {
-          "zen.welcome-screen.seen" = true;
-        };
-      };
     };
   };
 }
