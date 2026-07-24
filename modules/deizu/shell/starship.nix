@@ -16,15 +16,18 @@
           "$shlvl"
           "$character"
         ];
+        username = {
+          show_always = true;
+        };
+        directory = {
+          truncate_to_repo = false;
+        };
         direnv.disabled = false;
         status = {
           disabled = false;
           format = "[$symbol]($style)";
         };
         shlvl.disabled = false;
-        username = {
-          show_always = true;
-        };
       };
     };
   };
