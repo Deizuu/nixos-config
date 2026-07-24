@@ -8,10 +8,10 @@
 
         format = lib.concatStrings [
           "\n"
-          "$all"
           "$username"
           "$directory"
           "\n"
+          "$all"
           "$status"
           "$shlvl"
           "$character"
