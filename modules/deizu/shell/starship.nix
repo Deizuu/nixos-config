@@ -9,6 +9,9 @@
         format = lib.concatStrings [
           "\n"
           "$all"
+          "$username"
+          "$directory"
+          "\n"
           "$status"
           "$shlvl"
           "$character"
