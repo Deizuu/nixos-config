@@ -11,6 +11,7 @@
         pkgs.lsp-plugins
         pkgs.ratatouille-lv2
         pkgs.tap-plugins
+        pkgs.vocproc
         namLv2
       ];
     };
