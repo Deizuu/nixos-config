@@ -6,6 +6,7 @@
         enableFormat = true;
         enableTreesitter = true;
 
+        json.enable = true;
         nix.enable = true;
         python.enable = true;
         html.enable = true;
