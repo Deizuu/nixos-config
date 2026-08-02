@@ -7,7 +7,10 @@
           IPv6.Enabled = true;
         };
       };
-      networkmanager.wifi.backend = "iwd";
+      networkmanager = {
+        enable = true;
+        wifi.backend = "iwd";
+      };
     };
   };
 }

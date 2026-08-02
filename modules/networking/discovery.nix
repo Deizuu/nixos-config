@@ -5,7 +5,7 @@
       nssmdns4 = true;
       publish = {
         enable = true;
-	addresses = true;
+        addresses = true;
       };
     };
   };
