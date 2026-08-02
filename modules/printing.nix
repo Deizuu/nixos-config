@@ -10,6 +10,6 @@
       ];
     };
 
-    my.user.extraGroups = [ "lpadmin" ];
   };
+  my.user.extraGroups = [ "lpadmin" ];
 }

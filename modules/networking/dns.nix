@@ -12,5 +12,16 @@
         "1.1.1.1" # Cloudflare DNS (most fallbackest of the fallback)
       ];
     };
+    services.resolved = {
+      enable = true;
+      settings = {
+        Resolve = {
+          DNSSEC = true;
+          DNSOverTLS = true;
+          LLMNR = true;
+          MulticastDNS = "resolve";
+        };
+      };
+    };
   };
 }
