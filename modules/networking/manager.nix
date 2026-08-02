@@ -13,4 +13,7 @@
       };
     };
   };
+  my.user.extraGroups = [
+    "networkmanager"
+  ];
 }

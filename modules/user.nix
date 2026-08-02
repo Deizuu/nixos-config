@@ -1,4 +1,9 @@
-{ config, lib, inputs, ... }:
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 let
   cfg = config.my.user;
 in
@@ -16,7 +21,7 @@ in
 
     extraGroups = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [ "wheel" "input" ];
+      default = [ ];
     };
 
     home = {
@@ -30,12 +35,16 @@ in
   };
 
   config = {
-    my.user.home = {inherit (config.homeManager.modules) base gui;};
+    my.user.home = { inherit (config.homeManager.modules) base gui; };
 
     nixos.modules.base = {
       users.users.${cfg.name} = {
         isNormalUser = true;
-	inherit (cfg) description extraGroups;
+        inherit (cfg) description;
+        extraGroups = lib.mkMerge [
+          [ "wheel" "input"]
+          cfg.extraGroups
+        ];
       };
 
       home-manager.users.${cfg.name} = {

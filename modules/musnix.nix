@@ -11,6 +11,6 @@
 
     musnix.enable = true;
 
-    users.users.${config.my.user.name}.extraGroups = [ "audio" ];
   };
+  my.user.extraGroups = [ "audio" ];
 }
