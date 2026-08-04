@@ -5,7 +5,7 @@
 
       pc
 
-      plasma
+      xfce
       lightdm
       nvidiaKepler
       tmxDrivers
