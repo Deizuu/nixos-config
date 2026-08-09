@@ -9,6 +9,7 @@
       lightdm
       nvidiaKepler
       tmxDrivers
+      wol
     ];
 
     networking.hostName = "vesta";
