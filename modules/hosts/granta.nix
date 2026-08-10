@@ -6,8 +6,7 @@
       pc
 
       chromebookAudioFix
-      gdm
-      gnome
+      plasma
     ];
     
     # Disable TPM2 to fix boot waiting time
