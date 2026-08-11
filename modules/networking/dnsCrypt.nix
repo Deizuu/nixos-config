@@ -23,6 +23,22 @@
           require_dnssec = true;
           require_nolog = true;
           require_nofilter = true;
+
+          server_names = [
+            "mullvad-family-doh-ipv6"
+            "mullvad-family-doh"
+            
+            "quad9-dnscrypt-ip6-filter-ecs-pri"
+            "quad9-dnscrypt-ip4-filter-ecs-pri"
+
+            "nextdns-ipv6"
+            "nextdns"
+
+            "cloudflare-family-ipv6"
+            "cloudflare-family"
+
+            "cloudflare"
+          ];
         };
       };
       systemd.services.dnscrypt-proxy.serviceConfig.StateDirectory = StateDirectory;
