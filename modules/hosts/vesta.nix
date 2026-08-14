@@ -11,6 +11,7 @@
       tmxDrivers
       wol
     ];
+    
 
     networking.hostName = "vesta";
     system.stateVersion = "26.05";
