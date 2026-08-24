@@ -3,6 +3,7 @@
 
   imports = [
     inputs.flake-file.flakeModules.default
+    inputs.flake-parts.flakeModules.modules
   ];
 
   systems = inputs.nixpkgs.lib.systems.flakeExposed;
