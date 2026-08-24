@@ -1,16 +1,14 @@
-{ config, ... }: {
-  nixos.configurations.granta.module = { pkgs, ... }: {
-    imports = with config.nixos.modules; [
+{ self, inputs, ... }: {
+  flake.nixosConfigurations.granta = inputs.nixpkgs.lib.nixosSystem {
+    modules = with self.modules.nixos; [
+      granta
       grantaHardware
-
-      pc
-
-      chromebookAudioFix
-      gnome
-      gdm
     ];
+  };
 
-    # Disable TPM2 to fix boot waiting time
+  flake.modules.nixos.granta = {
+
+    # Disable TPM2 to fix systemd hang
     boot.initrd.systemd.tpm2.enable = false;
     systemd.tpm2.enable = false;
 

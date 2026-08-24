@@ -1,5 +1,5 @@
 {
-  nixos.modules.grantaHardware = { config, lib, pkgs, modulesPath, ... }: {
+  flake.modules.nixos.grantaHardware = { config, lib, pkgs, modulesPath, ... }: {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
