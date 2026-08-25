@@ -6,6 +6,12 @@
       autoTime
       location
       printing
+
+      gdm
+      lightdm
+      
+      gnome
+      xfce
     ];
   };
 }

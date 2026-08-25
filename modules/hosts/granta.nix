@@ -15,6 +15,9 @@
     dzu.autoTime.enable = true;
     dzu.location.enable = true;
 
+    dzu.login.gdm.enable = true;
+    dzu.de.gnome.enable = true;
+
     # dzu.home-manager.enable = true;
 
     dzu.networking = {
