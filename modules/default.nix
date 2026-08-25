@@ -4,6 +4,7 @@
   imports = [
     inputs.flake-file.flakeModules.default
     inputs.flake-parts.flakeModules.modules
+    inputs.home-manager.flakeModules.home-manager
   ];
 
   systems = inputs.nixpkgs.lib.systems.flakeExposed;
