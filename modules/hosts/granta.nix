@@ -3,6 +3,7 @@
     modules = with self.modules.nixos; [
       granta
       grantaHardware
+      inputs.home-manager.nixosModules.home-manager
 
       pc
     ];
@@ -18,7 +19,7 @@
     dzu.login.gdm.enable = true;
     dzu.de.gnome.enable = true;
 
-    # dzu.home-manager.enable = true;
+    dzu.home-manager.enable = true;
 
     dzu.networking = {
       wifi.enable = true;
