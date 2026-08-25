@@ -20,7 +20,7 @@
     in
     {
       options.dzu.home-manager = {
-        enable = lib.mkEnableOption "Enable home-manager (requires home-manager module in nixosSystem modules";
+        enable = lib.mkEnableOption "Enable home-manager (requires home-manager module in nixosSystem modules)";
       };
       config = lib.mkIf cfg.enable {
         home-manager = {
