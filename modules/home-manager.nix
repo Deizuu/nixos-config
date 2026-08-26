@@ -1,8 +1,4 @@
 { inputs, ... }: {
-  imports = [
-    inputs.home-manager.flakeModules.home-manager
-  ];
-
   flake-file.inputs.home-manager = {
     url = "github:nix-community/home-manager";
     inputs.nixpkgs.follows = "nixpkgs";
@@ -12,7 +8,6 @@
     {
       config,
       lib,
-      inputs,
       ...
     }:
     let
@@ -20,9 +15,10 @@
     in
     {
       options.dzu.home-manager = {
-        enable = lib.mkEnableOption "Enable home-manager (requires home-manager module in nixosSystem modules)";
+        enable = lib.mkEnableOption "Enable home-manager";
       };
       config = lib.mkIf cfg.enable {
+        imports = [ inputs.home-manager.nixosModules.home-manager ];
         home-manager = {
           backupFileExtension = ".backup";
           overwriteBackup = true;

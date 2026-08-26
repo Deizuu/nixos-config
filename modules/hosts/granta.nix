@@ -3,13 +3,14 @@
     modules = with self.modules.nixos; [
       granta
       grantaHardware
-      inputs.home-manager.nixosModules.home-manager
-
-      pc
     ];
   };
 
   flake.modules.nixos.granta = {
+    imports = with self.modules.nixos; [
+      pc
+    ];
+
     dzu.boot.silentBoot = true;
     dzu.boot.usePlymouth = true;
 
