@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.networking =
+  flake.modules.nixos.base =
     { config, lib, ... }:
     let
       cfg = config.dzu.networking;

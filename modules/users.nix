@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.users =
+  flake.modules.nixos.base =
     { config, lib, ... }:
     {
       options.dzu.users = lib.mkOption {

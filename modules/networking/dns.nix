@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.networking = { config, ... }: {
+  flake.modules.nixos.base = { config, ... }: {
     config = {
       networking = {
         nameservers = [
