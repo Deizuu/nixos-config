@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.gnome =
+  flake.modules.nixos.pc =
     { config, lib, ... }:
     let
       cfg = config.dzu.de.gnome;

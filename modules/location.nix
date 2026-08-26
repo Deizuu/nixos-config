@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.location =
+  flake.modules.nixos.pc =
     { config, lib, ... }:
     let
       cfg = config.dzu.location;

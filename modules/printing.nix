@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.printing =
+  flake.modules.nixos.pc =
     {
       config,
       lib,

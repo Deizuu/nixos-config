@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.autoTime =
+  flake.modules.nixos.pc =
     { config, lib, ... }:
     let
       cfg = config.dzu.autoTime;

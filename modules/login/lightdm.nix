@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.lightdm =
+  flake.modules.nixos.pc =
     { config, lib, ... }:
     let
       cfg = config.dzu.login.lightdm;

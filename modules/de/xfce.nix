@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.xfce =
+  flake.modules.nixos.pc =
     { config, lib, ... }:
     let
       cfg = config.dzu.de.xfce;
