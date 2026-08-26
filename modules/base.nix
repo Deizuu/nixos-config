@@ -4,6 +4,7 @@
       boot
       home-manager
       networking
+      users
     ];
   };
 }
