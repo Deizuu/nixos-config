@@ -3,14 +3,12 @@
     modules = with self.modules.nixos; [
       granta
       grantaHardware
+
+      pc
     ];
   };
 
   flake.modules.nixos.granta = {
-    imports = with self.modules.nixos; [
-      pc
-    ];
-
     dzu.boot.silentBoot = true;
     dzu.boot.usePlymouth = true;
 
@@ -19,8 +17,6 @@
 
     dzu.login.gdm.enable = true;
     dzu.de.gnome.enable = true;
-
-    dzu.home-manager.enable = true;
 
     dzu.networking = {
       wifi.enable = true;
