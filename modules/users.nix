@@ -1,4 +1,4 @@
-{
+{ self, ... }: {
   flake.modules.nixos.base =
     { config, lib, ... }:
     {
@@ -20,7 +20,11 @@
                 description = "Groups the user is apart of";
               };
               module = lib.mkOption {
-                type = lib.types.deferredModule;
+                type = lib.types.deferredModuleWith {
+                  imports = [
+                    self.modules.hm.base
+                  ];
+                };
                 description = "User's HM module";
               };
             };
