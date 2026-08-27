@@ -21,8 +21,9 @@
               };
               module = lib.mkOption {
                 type = lib.types.deferredModuleWith {
-                  imports = [
-                    self.modules.hm.base
+                  imports = with self.modules.hm; [
+                    base
+                    gui
                   ];
                 };
                 description = "User's HM module";
