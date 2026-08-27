@@ -12,6 +12,12 @@
     dzu.boot.silentBoot = true;
     dzu.boot.usePlymouth = true;
 
+    dzu.audio = {
+      enable = true;
+      enableChromebook = true;
+      enableJack = true;
+    };
+
     dzu.autoTime.enable = true;
     dzu.location.enable = true;
 
