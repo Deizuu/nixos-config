@@ -16,7 +16,6 @@
       enable = true;
       enableChromebook = true;
       enableJack = true;
-      musnix.enable = true;
     };
 
     dzu.autoTime.enable = true;
@@ -29,8 +28,11 @@
       wifi.enable = true;
       discovery.enable = true;
     };
-    
+
     dzu.printing.enable = true;
+
+    musnix.enable = true;
+    stylix.enable = true;
 
     # Disable TPM2 to fix systemd hang
     boot.initrd.systemd.tpm2.enable = false;
