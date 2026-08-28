@@ -16,6 +16,7 @@
       enable = true;
       enableChromebook = true;
       enableJack = true;
+      musnix.enable = true;
     };
 
     dzu.autoTime.enable = true;
