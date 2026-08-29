@@ -1,6 +1,11 @@
 { self, ... }: {
   flake.modules.nixos.base =
-    { config, lib, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     {
       options.dzu.users = lib.mkOption {
         type = lib.types.lazyAttrsOf lib.types.submodule (
@@ -19,6 +24,11 @@
                 type = lib.types.listOf lib.types.str;
                 description = "Groups the user is apart of";
               };
+              shell = lib.mkOption {
+                type = lib.types.package;
+                description = "User shell";
+                default = pkgs.zsh;
+              };
               module = lib.mkOption {
                 type = lib.types.deferredModuleWith {
                   imports = with self.modules.hm; [
@@ -33,7 +43,7 @@
             config = {
               users.users.${config.name} = {
                 isNormalUser = true;
-                inherit (config) description;
+                inherit (config) description shell;
                 extraGroups = lib.mkMerge [
                   config.extraGroups
                   config.dzu.usersDefaultGroups
