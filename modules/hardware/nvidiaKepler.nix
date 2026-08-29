@@ -33,6 +33,12 @@
           vulkan-loader
           vulkan-tools
         ];
+        dzu.allowUnfreePackages = [
+          "nvidia-x11"
+          "cuda_nvml_dev"
+          "nvidia-settings"
+          "nvidia-kernel-modules"
+        ];
 
         boot.kernelModules = [ "nvidia" ];
         boot.kernelParams = [ "nvidia-drm.modeset=1" ];
