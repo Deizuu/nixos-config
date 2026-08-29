@@ -1,6 +1,11 @@
 {
   flake.modules.hm.gui =
-    { config, lib, pkgs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     let
       cfg = config.dzu.apps.chromium;
     in
