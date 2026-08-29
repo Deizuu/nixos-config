@@ -3,7 +3,7 @@
     url = "github:0xc000022070/zen-browser-flake";
     inputs = {
       nixpkgs.follows = "nixpkgs";
-      home-manager.followd = "home-manager";
+      home-manager.follows = "home-manager";
     };
   };
   flake.modules.hm.gui =
