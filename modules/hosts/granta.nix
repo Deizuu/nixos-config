@@ -33,6 +33,15 @@
 
     dzu.users.deizu.enable = true;
 
+    dzu.apps = {
+      file-roller.enable = true;
+      gamemode.enable = true;
+      hotspot.enable = true;
+      oversteer.enable = true;
+      polychromatic.enable = true;
+      steam.enable = true;
+    };
+
     musnix.enable = true;
     stylix.enable = true;
 

@@ -17,5 +17,8 @@
           description = "Package list of games";
         };
       };
+      config = lib.mkIf cfg.enable {
+        home.packages = cfg.games;
+      };
     };
 }
