@@ -31,6 +31,8 @@
 
     dzu.printing.enable = true;
 
+    dzu.users.deizu.enable = true;
+
     musnix.enable = true;
     stylix.enable = true;
 

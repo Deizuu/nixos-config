@@ -5,6 +5,7 @@
       options.dzu.users = lib.mkOption {
         type = lib.types.lazyAttrsOf lib.types.submodule ({
           options = {
+            enable = lib.mkEnableOption "Enable user";
             name = lib.mkOption {
               type = lib.types.str;
               description = "User's name";
