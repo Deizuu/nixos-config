@@ -1,4 +1,4 @@
-{
+{ self, ... }: {
   flake.modules.nixos.base =
     {
       config,
@@ -49,7 +49,7 @@
       };
       config = {
         users.users = lib.mapAttrs' (name: user: {
-          name = "${name}";
+          inherit name;
           value = {
             enable = user.enable;
             isNormalUser = user.enable;
@@ -60,6 +60,13 @@
             ];
           };
         }) cfg;
+        home-manager.users = lib.mapAttrs (
+          name: user:
+          lib.mkIf user.enable {
+            imports = [ user.module ];
+          }
+        ) cfg;
+
         dzu.usersDefaultGroups = [
           "networkmanager"
           "input"

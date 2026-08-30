@@ -8,11 +8,7 @@
         "audio"
         "lpadmin"
       ];
-      module = {
-        imports = [
-          self.modules.hm.deizu
-        ];
-      };
+      module = self.modules.hm.deizu;
     };
     dzu.allowUnfreePackages = [
       "clonehero"
@@ -20,6 +16,11 @@
     ];
   };
   flake.modules.hm.deizu = { pkgs, ... }: {
+    imports = [
+      self.modules.hm.base
+      self.modules.hm.gui
+    ];
+
     home.sessionVariables = {
       SSH_AUTH_SOCK = "/home/deizu/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock"; # TODO find a purer way to set this (maybe imperatively after installing Bitwarden Desktop?)
     };
