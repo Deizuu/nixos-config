@@ -3,7 +3,11 @@
     dzu.users.deizu = {
       name = "deizu";
       description = "Deizu";
-      extraGroups = [ "wheel" ];
+      extraGroups = [
+        "wheel"
+        "audio"
+        "lpadmin"
+      ];
       module = {
         imports = [
           self.modules.hm.deizu

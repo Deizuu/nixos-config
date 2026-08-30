@@ -62,5 +62,8 @@
         type = lib.types.listOf lib.types.str;
         description = "Default groups for all users";
       };
+      config = {
+        dzu.usersDefaultGroups = [ "networkmanager" "input" "openrazer" ];
+      };
     };
 }
