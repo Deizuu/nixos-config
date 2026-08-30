@@ -4,20 +4,18 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  flake.modules.hm.base =
+  flake.modules.homeManager.base =
     { config, lib, ... }:
     let
       cfg = config.dzu.apps.neovim;
     in
     {
+      imports = [ inputs.nvf.homeManagerModules.default ];
       options.dzu.apps.neovim = {
         enable = lib.mkEnableOption "Enable Neovim";
         defaultEditor = lib.mkEnableOption "Make Neovim the default editor for the user";
       };
       config = {
-        imports = [
-          inputs.nvf.homeManagerModules.default
-        ];
 
         programs.nvf = {
           enable = lib.mkIf cfg.enable true;

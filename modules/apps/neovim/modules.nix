@@ -1,5 +1,5 @@
 {
-  flake.modules.hm.base = {
+  flake.modules.homeManager.base = {
     programs.nvf.settings.vim = {
       autocomplete.nvim-cmp.enable = true;
       git.enable = true;

@@ -1,5 +1,5 @@
 {
-  flake.modules.hm.base = {
+  flake.modules.homeManager.base = {
     programs.nvf.settings.vim = {
       options.autoindent = true;
       options.tabstop = 2;

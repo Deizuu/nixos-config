@@ -1,5 +1,5 @@
 {
-  flake.modules.hm.gui =
+  flake.modules.homeManager.gui =
     { config, lib, ... }:
     let
       cfg = config.dzu.apps.games;

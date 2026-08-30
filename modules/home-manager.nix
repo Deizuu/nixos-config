@@ -14,7 +14,7 @@
     };
   };
 
-  flake.modules.hm.base = { osConfig, ... }: {
+  flake.modules.homeManager.base = { osConfig, ... }: {
     home.stateVersion = osConfig.system.stateVersion;
   };
 }

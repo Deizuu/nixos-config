@@ -8,17 +8,17 @@
         "audio"
         "lpadmin"
       ];
-      module = self.modules.hm.deizu;
+      module = self.modules.homeManager.deizu;
     };
     dzu.allowUnfreePackages = [
       "clonehero"
       "osu-lazer-bin"
     ];
   };
-  flake.modules.hm.deizu = { pkgs, ... }: {
+  flake.modules.homeManager.deizu = { pkgs, ... }: {
     imports = [
-      self.modules.hm.base
-      self.modules.hm.gui
+      self.modules.homeManager.base
+      self.modules.homeManager.gui
     ];
 
     home.sessionVariables = {

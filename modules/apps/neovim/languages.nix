@@ -1,5 +1,5 @@
 {
-  flake.modules.hm.base = { pkgs, ... }: {
+  flake.modules.homeManager.base = { pkgs, ... }: {
     home.packages = [ pkgs.tree-sitter ];
     programs.nvf.settings.vim = {
       languages = {

@@ -1,5 +1,5 @@
 {
-  flake.modules.hm.gui =
+  flake.modules.homeManager.gui =
     {
       config,
       lib,
@@ -7,7 +7,7 @@
       ...
     }:
     let
-      cfg = config.dzu.proAudio;
+      cfg = config.dzu.apps.proAudio;
     in
     {
       config = lib.mkIf cfg.enable {

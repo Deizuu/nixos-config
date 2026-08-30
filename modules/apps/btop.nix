@@ -1,5 +1,5 @@
 {
-  flake.modules.hm.gui = {
+  flake.modules.homeManager.gui = {
     programs.btop = {
       enable = true;
       settings = {

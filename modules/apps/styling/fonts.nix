@@ -1,5 +1,5 @@
 {
-  flake.modules.hm.gui = { pkgs, ... }: {
+  flake.modules.homeManager.gui = { pkgs, ... }: {
     stylix.fonts = {
       monospace = {
         package = pkgs.nerd-fonts.jetbrains-mono;
