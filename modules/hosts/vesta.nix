@@ -14,7 +14,6 @@
 
     dzu.audio = {
       enable = true;
-      enableChromebook = true;
       enableJack = true;
     };
 
