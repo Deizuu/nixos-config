@@ -63,7 +63,11 @@
         description = "Default groups for all users";
       };
       config = {
-        dzu.usersDefaultGroups = [ "networkmanager" "input" "openrazer" ];
+        dzu.usersDefaultGroups = [
+          "networkmanager"
+          "input"
+          "openrazer"
+        ];
       };
     };
 }
