@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.razer =
+  flake.modules.nixos.pc =
     { config, lib, ... }:
     let
       cfg = config.dzu.hw.razer;

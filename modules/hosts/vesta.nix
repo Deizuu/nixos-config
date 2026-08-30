@@ -18,6 +18,7 @@
     };
 
     dzu.hw.nvidiaKepler.enable = true;
+    dzu.hw.razer.enable = true;
     dzu.hw.tablet.enable = true;
 
     dzu.autoTime.enable = true;
