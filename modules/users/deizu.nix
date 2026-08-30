@@ -24,7 +24,11 @@
     home.sessionVariables = {
       SSH_AUTH_SOCK = "/home/deizu/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock"; # TODO find a purer way to set this (maybe imperatively after installing Bitwarden Desktop?)
     };
-
+    programs.git.settings.user = {
+      name = "Deizuu";
+      email = "120480615+Deizuu@users.noreply.github.com";
+    };
+    dzu.zsh.enable = true;
     dzu.apps = {
       blender.enable = true;
       distrobox.enable = true;
