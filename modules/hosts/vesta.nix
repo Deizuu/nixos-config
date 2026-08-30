@@ -41,8 +41,14 @@
       hotspot.enable = true;
       oversteer.enable = true;
       polychromatic.enable = true;
+      proton-vpn.enable = true;
       steam.enable = true;
+      vial.enable = true;
+      vlc.enable = true;
     };
+    
+    dzu.appimage.enable = true;
+    dzu.flatpak.enable = true;
 
     musnix.enable = true;
     stylix.enable = true;
