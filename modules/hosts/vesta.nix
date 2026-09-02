@@ -47,7 +47,7 @@
       vial.enable = true;
       vlc.enable = true;
     };
-    
+
     dzu.appimage.enable = true;
     dzu.flatpak.enable = true;
 

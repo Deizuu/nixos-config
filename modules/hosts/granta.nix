@@ -20,7 +20,7 @@
 
     dzu.autoTime.enable = true;
     dzu.location.enable = true;
-    
+
     dzu.hw.razer.enable = true;
     dzu.hw.tablet.enable = true;
 
