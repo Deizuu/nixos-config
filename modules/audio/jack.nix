@@ -11,7 +11,7 @@
       config = lib.mkIf cfg.enableJack {
         services.pipewire.jack.enable = true;
         services.pipewire.extraConfig.jack = {
-          "99-low-latency"."jack.properties"."node.latency" = "512/48000";
+          "99-low-latency"."jack.properties"."node.latency" = "256/48000";
         };
       };
     };
