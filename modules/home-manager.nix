@@ -1,29 +1,20 @@
-{ inputs, lib, ... }: {
-  options.homeManager = {
-    modules = lib.mkOption {
-      type = lib.types.lazyAttrsOf lib.types.deferredModule;
+{ inputs, ... }: {
+  flake-file.inputs.home-manager = {
+    url = "github:nix-community/home-manager";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  flake.modules.nixos.base = {
+    imports = [ inputs.home-manager.nixosModules.home-manager ];
+    home-manager = {
+      backupFileExtension = ".backup";
+      overwriteBackup = true;
+      useGlobalPkgs = true;
+      useUserPackages = true;
     };
   };
 
-  config = {
-    flake-file.inputs.home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    homeManager.modules.base = { osConfig, ... }: {
-      home.stateVersion = osConfig.system.stateVersion;
-    };
-
-    nixos.modules.base = {
-      imports = [ inputs.home-manager.nixosModules.home-manager ];
-
-      home-manager = {
-        backupFileExtension = ".backup";
-	overwriteBackup = true;
-	useGlobalPkgs = true;
-	useUserPackages = true;
-      };
-    };
+  flake.modules.homeManager.base = { osConfig, ... }: {
+    home.stateVersion = osConfig.system.stateVersion;
   };
 }

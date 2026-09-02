@@ -1,19 +1,27 @@
 {
-  nixos.modules.base = {pkgs, ...}: {
-    networking = {
-      wireless.iwd = {
-        enable = true;
-        settings = {
-          IPv6.Enabled = true;
+  flake.modules.nixos.base =
+    { config, lib, ... }:
+    let
+      cfg = config.dzu.networking;
+    in
+    {
+      options.dzu.networking = {
+        wifi.enable = lib.mkEnableOption "Enable Wi-Fi using iwd backend";
+      };
+      config = {
+        networking = {
+          wireless.iwd = lib.mkIf cfg.wifi.enable {
+            enable = true;
+            settings = {
+              IPv6.Enabled = true;
+            };
+          };
+
+          networkmanager = {
+            enable = true;
+            wifi.backend = lib.mkIf cfg.wifi.enable "iwd";
+          };
         };
       };
-      networkmanager = {
-        enable = true;
-        wifi.backend = "iwd";
-      };
     };
-  };
-  my.user.extraGroups = [
-    "networkmanager"
-  ];
 }
