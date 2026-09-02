@@ -11,13 +11,14 @@
     in
     {
       config = lib.mkIf cfg.enable {
-        home.packages = [
-          pkgs.calf
-          pkgs.guitarix
-          pkgs.lsp-plugins
-          pkgs.ratatouille-lv2
-          pkgs.tap-plugins
-          pkgs.neural-amp-modeler-lv2
+        home.packages = with pkgs; [
+          calf
+          guitarix
+          lsp-plugins
+          ratatouille-lv2
+          tap-plugins
+          neural-amp-modeler-lv2
+          x42-avldrums
         ];
       };
     };
