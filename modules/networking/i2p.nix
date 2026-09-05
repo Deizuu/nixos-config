@@ -10,6 +10,7 @@
       };
       config = lib.mkIf cfg.enable {
         services.i2p.enable = true;
+        systemd.services.i2p.wantedBy = lib.mkForce [];
       };
     };
 }
