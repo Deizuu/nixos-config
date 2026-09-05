@@ -30,6 +30,7 @@
     dzu.networking = {
       wifi.enable = true;
       discovery.enable = true;
+      i2p.enable = true;
     };
 
     dzu.printing.enable = true;
