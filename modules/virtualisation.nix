@@ -16,9 +16,11 @@
       config = lib.mkIf cfg.enable {
         environment.systemPackages = [
           pkgs.qemu
-          pkgs.virt-manager
         ];
+        virtualisation.libvirtd.enable = true;
+        programs.virt-manager.enable = true;
         programs.dconf.enable = true; # virt-manager allegedly requires dconf
+        dzu.users.deizu.extraGroups = [ "libvirtd" ];
       };
     };
 }
