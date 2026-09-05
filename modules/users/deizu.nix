@@ -35,6 +35,7 @@
       distrobox.enable = true;
       element.enable = true;
       ente.enable = true;
+      firefox.enable = true;
       gimp.enable = true;
       github-cli.enable = true;
       kdeconnect.enable = true;
