@@ -52,6 +52,8 @@
     dzu.appimage.enable = true;
     dzu.flatpak.enable = true;
 
+    dzu.vm.enable = true;
+
     musnix.enable = true;
     stylix.enable = true;
 
