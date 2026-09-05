@@ -31,6 +31,7 @@
     dzu.zsh.enable = true;
     dzu.apps = {
       blender.enable = true;
+      chromium.enable = true;
       distrobox.enable = true;
       element.enable = true;
       ente.enable = true;
