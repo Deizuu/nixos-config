@@ -1,5 +1,5 @@
 {
-  nixos.modules.base = {
+  flake.modules.nixos.base = {
     nix.gc = {
       automatic = true;
       dates = "weekly";

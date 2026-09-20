@@ -1,5 +1,7 @@
-{ config, ... }: {
-  nixos.modules.pc = {
-    imports = [ config.nixos.modules.base ];
+{ self, ... }: {
+  flake.modules.nixos.pc = {
+    imports = with self.modules.nixos; [
+      base
+    ];
   };
 }
