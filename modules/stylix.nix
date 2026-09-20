@@ -22,6 +22,8 @@
           hash = "sha256-NdtooA+oODFnEdUeEwxlErVnFICt8JSzc9IMa8xLFxI=";
         };
         polarity = lib.mkDefault "dark";
+
+        targets.plymouth.enable = false; # fix build error
       };
     };
 }
