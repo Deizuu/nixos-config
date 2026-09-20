@@ -7,9 +7,14 @@
     in
     {
       config = {
+        environment.etc."dnscrypt-proxy/forwarding-rules.txt".text = ''
+          mabbox.bytel.fr 192.168.1.254
+        '';
         services.dnscrypt-proxy = {
           enable = true;
           settings = {
+            forwarding_rules = "/etc/dnscrypt-proxy/forwarding-rules.txt";
+
             sources.public-resolvers = {
               urls = [
                 "https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md"
