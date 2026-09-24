@@ -30,7 +30,7 @@
     dzu.networking = {
       wifi.enable = true;
       discovery.enable = true;
-      granta.enable = true;
+      tailscale.enable = true;
     };
 
     dzu.printing.enable = true;
