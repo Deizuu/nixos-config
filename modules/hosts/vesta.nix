@@ -31,6 +31,7 @@
       wifi.enable = true;
       discovery.enable = true;
       i2p.enable = true;
+      tailscale.enable = true;
     };
 
     dzu.printing.enable = true;
