@@ -9,8 +9,11 @@
   };
 
   flake.modules.nixos.vesta = {
-    dzu.boot.silentBoot = true;
-    dzu.boot.usePlymouth = true;
+    dzu.boot = {
+      silentBoot = true;
+      usePlymouth = true;
+      useOSProber = true;
+    };
 
     dzu.audio = {
       enable = true;
