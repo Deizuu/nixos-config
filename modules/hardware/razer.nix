@@ -1,15 +1,18 @@
 {
-  nixos.modules.base = { pkgs, ... }: {
-    hardware.openrazer = {
-      enable = true;
+  flake.modules.nixos.pc =
+    { config, lib, ... }:
+    let
+      cfg = config.dzu.hw.razer;
+    in
+    {
+      options.dzu.hw.razer = {
+        enable = lib.mkEnableOption "Enable openrazer driver";
+      };
+
+      config = lib.mkIf cfg.enable {
+        hardware.openrazer = {
+          enable = true;
+        };
+      };
     };
-
-    # Wiki says to add this, but hardware.openrazer.enable should be enough
-
-    # environment.systemPackages = with pkgs; [
-    #   openrazer-daemon
-    # ];
-  };
-
-  my.user.extraGroups = [ "openrazer" ];
 }

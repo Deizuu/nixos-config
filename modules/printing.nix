@@ -1,15 +1,30 @@
 {
-  nixos.modules.pc = { pkgs, ... }: {
-    services.printing = {
-      enable = true;
+  flake.modules.nixos.pc =
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
+    let
+      cfg = config.dzu.printing;
+    in
+    {
+      options.dzu.printing = {
+        enable = lib.mkEnableOption "Enable printing services";
+      };
 
-      drivers = with pkgs; [
-        gutenprint
-        hplip
-        splix
-      ];
+      config = lib.mkIf cfg.enable {
+        services.printing = {
+          enable = true;
+
+          drivers = with pkgs; [
+            gutenprint
+            hplip
+            splix
+          ];
+        };
+        #TODO add user to group "lpadmin"
+      };
     };
-
-  };
-  my.user.extraGroups = [ "lpadmin" ];
 }
